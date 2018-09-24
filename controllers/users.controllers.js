@@ -1,3 +1,4 @@
+var shortid = require('shortid');
 var db = require('../db');
 
 module.exports.index = (req, res) => res.render('users/index',{
@@ -24,8 +25,9 @@ module.exports.createPost =  (req, res) => {
 };
 
 module.exports.detail =  (req, res) =>{
-	var id = parseInt(req.params.id);
+	var id = req.params.id;
 	var user = db.get('users').find({ id:id }).value();
+	console.log(user);
 	res.render('users/detail',{
 		user: user
 	});

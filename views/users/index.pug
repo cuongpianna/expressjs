@@ -1,10 +1,22 @@
-h1 Users
-a(href="users/create") Tao user
-form(action="/users/search", method="GET")
-    input(type="text",name="q",value=q)
-    button Search
-ul
-    each user in users
-        li
-            a(href="/users/" + user.id)= user.name
-        
+extends ../layout/core
+
+block content
+    h1 Users
+    .d-flex
+        a.btn.btn-primary(href="users/create/") Tao user
+        form.d-flex.ml-auto(action="/users/search", method="GET")
+            input(type="text",name="q",value=q)
+            button Search
+
+    table.table.mt-3
+        tr
+            th Name
+            th Phone
+            th Action
+        each user in users
+            tr
+            td= user.name
+            td= user.phone
+            td
+                a.btn.btn-light(href="/users/" + user.id) View
+            
